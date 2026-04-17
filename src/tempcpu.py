@@ -4,8 +4,8 @@ send to Elasticsearch index.
 """
 
 import socket
-import psutil
 from datetime import datetime, timezone
+import psutil
 
 import constants
 import elastic
