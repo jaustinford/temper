@@ -1,0 +1,29 @@
+---
+services:
+
+  ###########################################################
+  # temper
+  ###########################################################
+
+  temper:
+    image: docker-hosted.proxy-int.pendragonlab.com/elise/temper:main
+    entrypoint: python src
+
+    environment:
+      - TZ=America/Denver
+
+    networks:
+      - temper
+
+    logging:
+      options:
+        max-size: 10m
+        max-file: '10'
+
+###########################################################
+# resources
+###########################################################
+
+networks:
+  temper:
+    name: temper
