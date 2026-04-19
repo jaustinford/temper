@@ -6,7 +6,7 @@ Elasticsearch.
 
 import time
 
-import tempcpu
+# import tempcpu
 
 def main():
     """
