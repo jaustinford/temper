@@ -25,8 +25,7 @@ def grab_hottest_core():
                 cpu_current = cpu_temp.current
 
     elif platform.machine() == "aarch64":
-        for cpu_temp in all_temp["cpu_thermal"]:
-            cpu_current = cpu_temp.current
+        cpu_current = all_temp["cpu_thermal"][0].current
 
     return cpu_current
 
