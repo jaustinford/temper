@@ -6,7 +6,7 @@ Elasticsearch.
 
 import time
 
-# import tempcpu
+import tempcpu
 
 def main():
     """
@@ -15,10 +15,10 @@ def main():
     """
 
     while True:
-        # cpu_current = tempcpu.grab_hottest_core()
-        # tempcpu.ingest_elastic(cpu_current)
+        cpu_current = tempcpu.grab_hottest_core()
+        tempcpu.ingest_elastic(cpu_current)
 
-        time.sleep(1000)
+        time.sleep(10)
 
 if __name__ == "__main__":
     main()
