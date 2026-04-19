@@ -15,10 +15,10 @@ def main():
     """
 
     while True:
-        cpu_current = tempcpu.grab_hottest_core()
-        tempcpu.ingest_elastic(cpu_current)
+        # cpu_current = tempcpu.grab_hottest_core()
+        # tempcpu.ingest_elastic(cpu_current)
 
-        time.sleep(10)
+        time.sleep(1000)
 
 if __name__ == "__main__":
     main()
