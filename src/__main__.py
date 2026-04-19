@@ -18,7 +18,7 @@ def main():
         cpu_current = tempcpu.grab_hottest_core()
         tempcpu.ingest_elastic(cpu_current)
 
-        time.sleep(1)
+        time.sleep(10)
 
 if __name__ == "__main__":
     main()
