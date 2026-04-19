@@ -81,19 +81,10 @@ def create_index_template(es_client: Elasticsearch, index_root_name: str):
                 },
                 "mappings": {
                     "properties": {
-                        "upsname": {
+                        "host": {
                             "type": "keyword"
                         },
-                        "status": {
-                            "type": "keyword"
-                        },
-                        "timeleft": {
-                            "type": "float"
-                        },
-                        "bcharge": {
-                            "type": "float"
-                        },
-                        "loadpct": {
+                        "cpu": {
                             "type": "float"
                         },
                         "@timestamp": {
