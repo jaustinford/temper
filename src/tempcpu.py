@@ -45,7 +45,7 @@ def ingest_elastic(cpu_current: int):
     es_client.index(
         index="temper",
         document={
-            "host": os.environ.get("HOSTNAME"),
+            "host": os.environ.get("HOST_HOSTNAME"),
             "cpu": cpu_current,
             "@timestamp": datetime.now(timezone.utc).strftime(constants.DATETIME_FORMAT)
         }
