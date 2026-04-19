@@ -4,6 +4,7 @@ send to Elasticsearch index.
 """
 
 import socket
+import platform
 from datetime import datetime, timezone
 import psutil
 
@@ -18,8 +19,13 @@ def grab_hottest_core():
 
     all_temp = psutil.sensors_temperatures()
 
-    for cpu_temp in all_temp["coretemp"]:
-        if cpu_temp.label == "Package id 0":
+    if platform.machine() == "x86_64":
+        for cpu_temp in all_temp["coretemp"]:
+            if cpu_temp.label == "Package id 0":
+                cpu_current = cpu_temp.current
+
+    elif platform.machine() == "aarch64":
+        for cpu_temp in all_temp["cpu_thermal"]:
             cpu_current = cpu_temp.current
 
     return cpu_current
