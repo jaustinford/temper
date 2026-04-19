@@ -3,7 +3,7 @@ Find the hottest CPU temperature and
 send to Elasticsearch index.
 """
 
-import socket
+import os
 import platform
 from datetime import datetime, timezone
 import psutil
@@ -45,7 +45,7 @@ def ingest_elastic(cpu_current: int):
     es_client.index(
         index="temper",
         document={
-            "host": socket.gethostname(),
+            "host": os.environ.get("HOSTNAME"),
             "cpu": cpu_current,
             "@timestamp": datetime.now(timezone.utc).strftime(constants.DATETIME_FORMAT)
         }
