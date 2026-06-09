@@ -4,7 +4,6 @@ authorized secrets using the AppRole
 authentication method.
 """
 
-
 import os
 import json
 import hvac
