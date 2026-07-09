@@ -3,10 +3,10 @@
 FROM python:3.9.19-bookworm
 
 RUN \
-    pip install \
+    pip3 install \
         psutil \
         hvac \
-        elasticsearch==8.13.0
+        elasticsearch==9.3.3
 
 WORKDIR /temper
 
