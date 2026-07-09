@@ -6,7 +6,7 @@ RUN \
     pip3 install \
         psutil \
         hvac \
-        elasticsearch==9.3.3
+        elasticsearch==9.1.3
 
 WORKDIR /temper
 

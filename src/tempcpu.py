@@ -8,8 +8,11 @@ import platform
 from datetime import datetime, timezone
 import psutil
 
+import logs
 import constants
 import elastic
+
+LOGGER = logs.logging.getLogger(__name__)
 
 def grab_hottest_core():
     """
@@ -42,13 +45,17 @@ def ingest_elastic(cpu_current: int):
         elastic.create_index_template(es_client, "temper")
         es_client.indices.create_data_stream(name="temper")
 
+    temp_metrics = {
+        "host": os.environ.get("HOST_HOSTNAME"),
+        "cpu": cpu_current,
+        "@timestamp": datetime.now(timezone.utc).strftime(constants.DATETIME_FORMAT)
+    }
+
+    LOGGER.info("Temperature metrics found : %s", temp_metrics)
+
     es_client.index(
         index="temper",
-        document={
-            "host": os.environ.get("HOST_HOSTNAME"),
-            "cpu": cpu_current,
-            "@timestamp": datetime.now(timezone.utc).strftime(constants.DATETIME_FORMAT)
-        }
+        document=temp_metrics
     )
 
     es_client.close()
