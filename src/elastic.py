@@ -86,4 +86,4 @@ def upload_document(es_client: Elasticsearch, index_root_name: str, index_docume
         document=index_document
     )
 
-    MAIN_LOG.info("Uploaded Elastic doc : %s", index_root_name)
+    MAIN_LOG.info("Uploaded Elastic doc : %s", index_document)

@@ -45,7 +45,7 @@ LOGGING_FORMAT_TIME   = CONF_TEMPER_YAML["logging"]["format"]["time"]
 
 logging.basicConfig(
     format=LOGGING_FORMAT_BANNER,
-    datefmt=LOGGING_FORMAT_DATE + " " + LOGGING_FORMAT_TIME + " Z",
+    datefmt=LOGGING_FORMAT_DATE + " " + LOGGING_FORMAT_TIME + " %Z",
     level=logging.INFO
 )
 
