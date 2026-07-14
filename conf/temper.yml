@@ -1,0 +1,10 @@
+---
+temper:
+  loop_interval: 10
+  unit: Celsius
+
+  logging:
+    format:
+      banner: "%(asctime)s [ %(levelname)s ] %(name)s - %(message)s"
+      date: "%Y-%m-%d"
+      time: "%H:%M:%S"

@@ -4,9 +4,38 @@ of temperature metric data to
 Elasticsearch.
 """
 
+import os
 import time
+from datetime import datetime, timezone
+import platform
+import psutil
 
-import tempcpu
+import constants
+import elastic
+
+def grab_hottest_core():
+    """
+    Return the temperature in Celsius
+    for the hottest CPU core.
+    """
+
+    all_temp = psutil.sensors_temperatures()
+
+    if platform.machine() == "x86_64":
+        for cpu_temp in all_temp["coretemp"]:
+            if cpu_temp.label == "Package id 0":
+                cpu_current = cpu_temp.current
+
+    elif platform.machine() == "aarch64":
+        cpu_current = all_temp["cpu_thermal"][0].current
+
+    if constants.UNIT == "Celsius":
+        cpu_unit = cpu_current
+
+    elif constants.UNIT == "Fahrenheit":
+        cpu_unit = (cpu_current * 9/5) + 32
+
+    return cpu_unit
 
 def main():
     """
@@ -15,10 +44,24 @@ def main():
     """
 
     while True:
-        cpu_current = tempcpu.grab_hottest_core()
-        tempcpu.ingest_elastic(cpu_current)
+        cpu_unit = grab_hottest_core()
 
-        time.sleep(10)
+        es_client = elastic.create_client("temper")
+
+        elastic.upload_document(
+            es_client,
+            "temper",
+            {
+                "host": os.environ.get("HOST_HOSTNAME"),
+                "cpu": cpu_unit,
+                "unit": constants.UNIT,
+                "@timestamp": datetime.now(timezone.utc).strftime(constants.DOC_FORMAT_TIMEDATE)
+            }
+        )
+
+        es_client.close()
+
+        time.sleep(constants.LOOP_INTERVAL)
 
 if __name__ == "__main__":
     main()

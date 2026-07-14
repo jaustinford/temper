@@ -1,0 +1,32 @@
+{
+  "index_patterns": ["temper*"],
+  "data_stream": {},
+  "template": {
+    "aliases": {
+      "temper-metric-data": {}
+    },
+    "settings": {
+      "number_of_shards": 1,
+      "number_of_replicas": 0,
+      "index.lifecycle.name": "temper-policy",
+      "index.lifecycle.rollover_alias": "temper-metric-data"
+    },
+    "mappings": {
+      "properties": {
+        "host": {
+          "type": "keyword"
+        },
+        "cpu": {
+          "type": "float"
+        },
+        "unit": {
+          "type": "keyword"
+        },
+        "@timestamp": {
+          "type": "date",
+          "format": "date_time_no_millis"
+        }
+      }
+    }
+  }
+}
