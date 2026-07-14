@@ -1,7 +1,17 @@
 ---
 temper:
+
+  # set how often the temperatures should
+  # be polled and data sent to Elastic.
+
   loop_interval: 10
+
+  # acceptable values are : 'Celsius' or 'Fahrenheit'.
+
   unit: Celsius
+
+  # project logging values for the 'MAIN_LOG'
+  # object.
 
   logging:
     format:
