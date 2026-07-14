@@ -1,6 +1,6 @@
 {
   "title": "cpu temperature data exporter",
-  "description": "defines project configurations",
+  "description": "project configurations",
   "properties": {
     "temper": {
       "type": "object",
