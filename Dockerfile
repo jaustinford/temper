@@ -12,3 +12,4 @@ RUN \
 WORKDIR /temper
 
 COPY src/ ./src/
+COPY conf/ ./conf/
