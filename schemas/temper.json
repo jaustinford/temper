@@ -1,0 +1,59 @@
+{
+  "title": "cpu temperature data exporter",
+  "description": "defines project configurations",
+  "properties": {
+    "temper": {
+      "type": "object",
+      "description": "project root object",
+      "properties": {
+        "loop_interval": {
+          "type": "number",
+          "description": "time to sleep in between loop iterations",
+          "minimum": 10,
+          "maximum": 120
+        },
+        "unit": {
+          "type": "string",
+          "description": "temperature unit",
+          "pattern": "^(celsius|fahrenheit)$"
+        },
+        "logging": {
+          "type": "object",
+          "description": "configure project logging",
+          "properties": {
+            "format": {
+              "type": "object",
+              "description": "log formatting timestamp",
+              "properties": {
+                "banner": {
+                  "type": "string",
+                  "description": "banner format for logs"
+                },
+                "date": {
+                  "type": "string",
+                  "description": "log formatting timestamp date element",
+                  "pattern": "^%Y(-|_|:)%m(-|_|:)%d$"
+                },
+                "time": {
+                  "type": "string",
+                  "description": "log formatting timestamp time element",
+                  "pattern": "^%H(-|_|:)%M(-|_|:)%S$"
+                }
+              },
+              "required": [
+                "banner",
+                "date",
+                "time"
+              ]
+            }
+          }
+        }
+      },
+      "required": [
+        "loop_interval",
+        "unit",
+        "logging"
+      ]
+    }
+  }
+}
