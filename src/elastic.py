@@ -59,7 +59,7 @@ def create_lifecycle_policy(es_client: Elasticsearch, index_root_name: str):
 
     es_client.ilm.put_lifecycle(
         name=index_root_name + "-policy",
-        body=constants.ELASTIC_POLICY_JSON
+        body=constants.ELASTIC_POLICY_READ
     )
 
     MAIN_LOG.info("Created Lifecycle Policy : %s", index_root_name)
@@ -71,7 +71,7 @@ def create_index_template(es_client: Elasticsearch, index_root_name: str):
 
     es_client.indices.put_index_template(
         name=index_root_name,
-        body=constants.ELASTIC_TEMPLATE_JSON
+        body=constants.ELASTIC_TEMPLATE_READ
     )
 
     MAIN_LOG.info("Created Index Template : %s", index_root_name)

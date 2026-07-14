@@ -4,7 +4,6 @@ and other global variables.
 """
 
 import os
-import json
 import logging
 import yaml
 
@@ -31,10 +30,10 @@ with open(CONF_TEMPER_FILE, "r", encoding="utf-8") as conf_temper_opened:
     CONF_TEMPER_YAML = yaml.safe_load(conf_temper_opened)["temper"]
 
 with open(ELASTIC_POLICY_FILE, "r", encoding="utf-8") as elastic_policy_opened:
-    ELASTIC_POLICY_JSON = json.loads(elastic_policy_opened)
+    ELASTIC_POLICY_READ = elastic_policy_opened.read()
 
 with open(ELASTIC_TEMPLATE_FILE, "r", encoding="utf-8") as elastic_template_opened:
-    ELASTIC_TEMPLATE_JSON = json.loads(elastic_template_opened)
+    ELASTIC_TEMPLATE_READ = elastic_template_opened.read()
 
 ##################################################
 # logging
