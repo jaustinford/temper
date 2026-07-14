@@ -6,9 +6,9 @@ temper:
 
   loop_interval: 10
 
-  # acceptable values are : 'Celsius' or 'Fahrenheit'.
+  # acceptable values are : 'celsius' or 'fahrenheit'.
 
-  unit: Celsius
+  unit: celsius
 
   # project logging values for the 'MAIN_LOG'
   # object.

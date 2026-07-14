@@ -29,10 +29,10 @@ def grab_hottest_core():
     elif platform.machine() == "aarch64":
         cpu_current = all_temp["cpu_thermal"][0].current
 
-    if constants.UNIT == "Celsius":
+    if constants.UNIT == "celsius":
         cpu_unit = cpu_current
 
-    elif constants.UNIT == "Fahrenheit":
+    elif constants.UNIT == "fahrenheit":
         cpu_unit = (cpu_current * 9/5) + 32
 
     return cpu_unit
