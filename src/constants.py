@@ -4,9 +4,9 @@ and other global variables.
 """
 
 import os
-import yaml
 import json
 import logging
+import yaml
 
 ##################################################
 # paths
