@@ -46,7 +46,8 @@
                 "time"
               ]
             }
-          }
+          },
+          "required": ["format"]
         }
       },
       "required": [
