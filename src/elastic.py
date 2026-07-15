@@ -29,7 +29,7 @@ def create_client(index_root_name: str):
         os.environ["ELASTIC_PASSWORD"] = elastic_auth["PASSWORD"]
 
     es_client = Elasticsearch(
-        "http://" + constants.ELASTIC_ENDPOINT,
+        constants.ELASTIC_ENDPOINT,
         basic_auth=(
             os.environ.get("ELASTIC_USERNAME"),
             os.environ.get("ELASTIC_PASSWORD")
