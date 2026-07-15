@@ -1,6 +1,6 @@
 """
-Ingest CPU temperature metric data
-into Elasticsearch.
+Create resources required for Elastic
+stack ingestion and uploading data.
 """
 
 import os
@@ -18,7 +18,7 @@ def create_client(index_root_name: str):
     """
 
     if not os.environ.get("ELASTIC_USERNAME") or not os.environ.get("ELASTIC_PASSWORD"):
-        vault_token = hvault.approle_login("temper")
+        vault_token = hvault.approle_login(index_root_name)
 
         elastic_auth = hvault.get_secret(
             vault_token,

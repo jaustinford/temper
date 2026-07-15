@@ -2,8 +2,8 @@
 ---
 temper:
 
-  # set how often the temperatures should
-  # be polled and data sent to Elastic.
+  # set the sleep in seconds in between project
+  # loops.
 
   loop_interval: 10
 
