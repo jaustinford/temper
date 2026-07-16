@@ -11,7 +11,7 @@ import platform
 import psutil
 
 import constants
-import elastic
+import tpl.elastic
 
 def grab_hottest_core():
     """
@@ -46,9 +46,9 @@ def main():
     while True:
         cpu_unit = grab_hottest_core()
 
-        es_client = elastic.create_client("temper")
+        es_client = tpl.elastic.create_client("temper")
 
-        elastic.upload_document(
+        tpl.elastic.upload_document(
             es_client,
             "temper",
             {
